@@ -1,0 +1,92 @@
+[
+  {
+    "query": "read config file before update",
+    "expected": "read_file",
+    "tools": [
+      {"id": "read_file", "name": "Read File", "description": "Read file content", "tags": ["filesystem", "read"]},
+      {"id": "edit_file", "name": "Edit File", "description": "Edit file content", "tags": ["filesystem", "write"]},
+      {"id": "search_web", "name": "Search Web", "description": "Search internet", "tags": ["web"]}
+    ]
+  },
+  {
+    "query": "update timeout in config",
+    "expected": "edit_file",
+    "tools": [
+      {"id": "read_file", "name": "Read File", "description": "Read file content", "tags": ["filesystem", "read"]},
+      {"id": "edit_file", "name": "Edit File", "description": "Modify file content", "tags": ["filesystem", "write"]},
+      {"id": "search_web", "name": "Search Web", "description": "Search internet", "tags": ["web"]}
+    ]
+  },
+  {
+    "query": "find docs about oauth flow",
+    "expected": "search_web",
+    "tools": [
+      {"id": "read_file", "name": "Read File", "description": "Read local file", "tags": ["filesystem"]},
+      {"id": "edit_file", "name": "Edit File", "description": "Edit local file", "tags": ["filesystem"]},
+      {"id": "search_web", "name": "Search Web", "description": "Web documentation search", "tags": ["web", "docs"]}
+    ]
+  },
+  {
+    "query": "send update to team via email",
+    "expected": "send_email",
+    "tools": [
+      {"id": "send_email", "name": "Send Email", "description": "Send email to recipients", "tags": ["communication", "email"]},
+      {"id": "search_web", "name": "Search Web", "description": "Search internet", "tags": ["web"]},
+      {"id": "read_file", "name": "Read File", "description": "Read files", "tags": ["filesystem"]}
+    ]
+  },
+  {
+    "query": "list files in current workspace",
+    "expected": "list_files",
+    "tools": [
+      {"id": "list_files", "name": "List Files", "description": "List directory entries", "tags": ["filesystem", "ls"]},
+      {"id": "search_web", "name": "Search Web", "description": "Search internet", "tags": ["web"]},
+      {"id": "send_email", "name": "Send Email", "description": "Send email", "tags": ["communication"]}
+    ]
+  },
+  {
+    "query": "commit changes to git repository",
+    "expected": "git_commit",
+    "tools": [
+      {"id": "git_commit", "name": "Git Commit", "description": "Create a commit", "tags": ["git", "vcs"]},
+      {"id": "edit_file", "name": "Edit File", "description": "Modify file", "tags": ["filesystem"]},
+      {"id": "search_web", "name": "Search Web", "description": "Search internet", "tags": ["web"]}
+    ]
+  },
+  {
+    "query": "run unit tests for this module",
+    "expected": "run_tests",
+    "tools": [
+      {"id": "run_tests", "name": "Run Tests", "description": "Run unit and integration tests", "tags": ["test", "ci"]},
+      {"id": "git_commit", "name": "Git Commit", "description": "Create commit", "tags": ["git"]},
+      {"id": "search_web", "name": "Search Web", "description": "Search internet", "tags": ["web"]}
+    ]
+  },
+  {
+    "query": "grep project for keyword timeout",
+    "expected": "grep_code",
+    "tools": [
+      {"id": "grep_code", "name": "Grep Code", "description": "Search codebase by regex", "tags": ["code", "search"]},
+      {"id": "search_web", "name": "Search Web", "description": "Search internet", "tags": ["web"]},
+      {"id": "send_email", "name": "Send Email", "description": "Send email", "tags": ["communication"]}
+    ]
+  },
+  {
+    "query": "open browser and navigate to docs site",
+    "expected": "open_url",
+    "tools": [
+      {"id": "open_url", "name": "Open URL", "description": "Open URL in browser", "tags": ["browser", "web"]},
+      {"id": "read_file", "name": "Read File", "description": "Read local file", "tags": ["filesystem"]},
+      {"id": "git_commit", "name": "Git Commit", "description": "Create commit", "tags": ["git"]}
+    ]
+  },
+  {
+    "query": "summarize markdown report",
+    "expected": "summarize_text",
+    "tools": [
+      {"id": "summarize_text", "name": "Summarize Text", "description": "Summarize long text", "tags": ["nlp", "summary"]},
+      {"id": "run_tests", "name": "Run Tests", "description": "Run tests", "tags": ["test"]},
+      {"id": "search_web", "name": "Search Web", "description": "Search web", "tags": ["web"]}
+    ]
+  }
+]

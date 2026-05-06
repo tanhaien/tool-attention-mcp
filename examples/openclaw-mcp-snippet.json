@@ -1,0 +1,17 @@
+{
+  "mcp": {
+    "servers": {
+      "tool-attention": {
+        "command": "/home/ta/tool-attention-mcp/.venv/bin/tool-attention-mcp",
+        "args": [],
+        "cwd": "/home/ta/tool-attention-mcp",
+        "env": {
+          "TA_USE_TOOL_ATTENTION": "1",
+          "TA_THRESHOLD": "0.28",
+          "TA_TOP_K_DEFAULT": "5",
+          "TA_VENDOR_PATH": "/home/ta/tool-attention-mcp/.vendor/tool-attention/code"
+        }
+      }
+    }
+  }
+}

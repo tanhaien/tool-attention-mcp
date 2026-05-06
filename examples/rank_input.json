@@ -1,0 +1,30 @@
+{
+  "query": "read config and then update timeout",
+  "top_k": 3,
+  "tools": [
+    {
+      "id": "read_file",
+      "name": "Read File",
+      "description": "Read file content from workspace",
+      "inputs_schema": {"path": "string"},
+      "tags": ["filesystem", "read"]
+    },
+    {
+      "id": "edit_file",
+      "name": "Edit File",
+      "description": "Apply edits to files",
+      "inputs_schema": {"path": "string", "patch": "string"},
+      "tags": ["filesystem", "write"]
+    },
+    {
+      "id": "search_web",
+      "name": "Search Web",
+      "description": "Web search",
+      "inputs_schema": {"query": "string"},
+      "tags": ["web"]
+    }
+  ],
+  "context": {
+    "recent_tools": ["list_files"]
+  }
+}

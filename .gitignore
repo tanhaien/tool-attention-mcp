@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environment
+.env
+
+# Tool Attention vendor — not our code, reference implementation from paper
+# We keep it in repo with proper attribution via submodule or subtree
+# If using as plain directory, keep it; if using submodule, vendor/
+
+# Benchmarks output
+benchmark_results/
