@@ -79,7 +79,7 @@ Tool Attention replaces "shove everything in" with "figure out what's relevant, 
 └─────────────────────────────────────────────┘
 ```
 
-**Result: 98.6% fewer tokens per turn.**
+**Reference benchmark:** 98.6% smaller Phase-1 summary pool and 91.9% lower per-turn marginal schema payload versus naive full-schema injection.
 
 ---
 
@@ -106,14 +106,17 @@ The agent can still *see* all tools it has via Phase 1, but only *loads* the one
 
 ## The Numbers 📊
 
-| Method | Tokens/Turn | Reduction |
+These figures are reproduced from the upstream reference implementation's deterministic synthetic benchmark (`asadani/tool-attention`, seed 42, 120 tools, 7 queries) using `tiktoken`'s `cl100k_base` encoding. This wrapper repository's `scripts_benchmark.py` is a separate routing-quality benchmark (hit@1/MRR); it does **not** produce these token counts.
+
+| Method | Tokens/Turn | Reduction vs full schemas |
 |---|---:|---:|
 | ❌ Full schemas for 120 tools | 57,452 | 0% |
-| 😕 Just grab top-k by keyword | 5,390 | 90.6% |
-| ✅ **Tool Attention (everyday use)** | **787** | **98.6%** |
-| ✅ Tool Attention (first message only) | 5,459 | 90.5% |
+| 😕 Simple retrieval (top-k full schemas) | 5,390 | 90.6% |
+| ✅ Tool Attention: Phase-1 summary pool | 787 | 98.6% |
+| ✅ **Tool Attention: Phase-2 top-k schemas** | **4,672** | **91.9%** |
+| ✅ Tool Attention: first turn (P1+P2) | 5,459 | 90.5% |
 
-> Phase 1 is cached after the first message. So for messages 2, 3, 4... you only pay ~800 tokens instead of ~5,400.
+> Important: **787 is the Phase-1 summary-pool size, not the total steady-state per-turn payload.** Phase 1 is stable and prompt-cacheable; under caching, the per-turn marginal schema cost is dominated by Phase 2 (~4,672 tokens in the reference benchmark).
 
 ---
 
